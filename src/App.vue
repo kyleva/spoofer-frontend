@@ -2,7 +2,7 @@
   <div id="app">
     <h3>spoofer</h3>
     <SpooferForm></SpooferForm>
-    <SpooferList v-bind:values="data.spoofItems"></SpooferList>
+    <SpooferList :spooferItems="spooferItems"></SpooferList>
   </div>
 </template>
 
@@ -10,25 +10,47 @@
 import 'whatwg-fetch'
 
 import SpooferForm from './components/SpooferForm'
+import SpooferList from './components/SpooferList'
 
 export default {
   name: 'app',
   data() {
     return {
-      spoofItems: [],
+      spooferItems: [
+        {
+          title: 'Hello',
+          description: 'Hello World',
+          image: 'http://placehold.it/250x250',
+        },
+      ],
     }
   },
   components: {
     SpooferForm,
+    SpooferList,
   },
   methods: {
     createSpoofItem(spoofItem) {
-      // bypass fetch
-      this.spoofItems.push({
+      // Bypass fetch for now
+      // Consider utilizing await/async here
+      // fetch(url, (data) => {
+      //   if (!data.success) {
+      //     return;
+      //   }
+      //   else {
+      //     this.spooferItems.push({
+      //       title: spoofItem.title,
+      //       description: spoofItem.description,
+      //       image: spoofItem.image,
+      //       spoofId: spoofItem.spoofId,
+      //     })
+      //   }
+      // })
+      this.spooferItems.push({
         title: spoofItem.title,
         description: spoofItem.description,
         image: spoofItem.image,
-        spoofId: spoofItem.spoofId,
+        spoofId: Math.floor(Math.random() * 5000),
       })
     },
   },
