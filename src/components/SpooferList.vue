@@ -8,7 +8,7 @@
         :image="spooferItem.image"
         :index="index"
         :key="spooferItem.id"
-      ></SpooferItem>
+      />
     </ul>
   </div>
 </template>
@@ -18,9 +18,9 @@ import SpooferItem from './SpooferItem'
 
 export default {
   name: 'SpooferList',
-  components: [
+  components: {
     SpooferItem,
-  ],
+  },
   props: [
     'spooferItems',
   ],
