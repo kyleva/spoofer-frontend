@@ -16,13 +16,7 @@ export default {
   name: 'app',
   data() {
     return {
-      spooferItems: [
-        {
-          title: 'Hello',
-          description: 'Hello World',
-          image: 'http://placehold.it/250x250',
-        },
-      ],
+      spooferItems: [],
     }
   },
   components: {
@@ -31,26 +25,25 @@ export default {
   },
   methods: {
     createSpoofItem(spoofItem) {
-      // Bypass fetch for now
-      // Consider utilizing await/async here
-      // fetch(url, (data) => {
-      //   if (!data.success) {
-      //     return;
-      //   }
-      //   else {
-      //     this.spooferItems.push({
-      //       title: spoofItem.title,
-      //       description: spoofItem.description,
-      //       image: spoofItem.image,
-      //       spoofId: spoofItem.spoofId,
-      //     })
-      //   }
-      // })
-      this.spooferItems.push({
-        title: spoofItem.title,
-        description: spoofItem.description,
-        image: spoofItem.image,
-        spoofId: Math.floor(Math.random() * 5000),
+      fetch(`${process.env.BACKEND_URL}/api/posts`, {
+        method: 'POST',
+        body: JSON.stringify({
+          title: spoofItem.title,
+          desc: spoofItem.description,
+          img: spoofItem.image,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(r => r.json())
+      .then((s) => {
+        this.spooferItems.push({
+          title: s.title,
+          description: s.desc,
+          image: s.img,
+          name: s.name,
+        })
       })
     },
   },

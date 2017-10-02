@@ -1,5 +1,5 @@
 <template>
-  <div class="SpooferListWrapper">
+  <div class="SpooferListWrapper" v-if="spooferItems.length > 0">
     <ul class="SpooferList">
       <SpooferItem
         v-for="(spooferItem, index) in spooferItems"
