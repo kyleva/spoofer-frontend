@@ -6,6 +6,7 @@
         :title="spooferItem.title"
         :description="spooferItem.description"
         :image="spooferItem.image"
+        :url="spooferItem.url"
         :index="index"
         :key="spooferItem.id"
       />

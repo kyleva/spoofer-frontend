@@ -42,7 +42,7 @@ export default {
           title: s.title,
           description: s.desc,
           image: s.img,
-          name: s.name,
+          url: `${process.env.BACKEND_URL}/${s.name}`,
         })
       })
     },
