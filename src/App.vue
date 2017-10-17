@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h3>spoofer</h3>
+    <h3 class="main-heading">Create</h3>
     <SpooferForm></SpooferForm>
     <SpooferList :spooferItems="spooferItems"></SpooferList>
   </div>
@@ -58,5 +58,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.main-heading {
+  font-size:30px;
 }
 </style>
