@@ -1,6 +1,6 @@
 language: node_js
 before_install:
-  - sed -i '' '/dist/d' ./.gitignore
+  - sed '/dist/d' ./.gitignore
   - npm install
 script: npm run build
 deploy:
