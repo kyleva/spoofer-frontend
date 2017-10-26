@@ -12,7 +12,6 @@ branches:
     - develop
 
 before_install:
-  - sed '/dist/d' ./.gitignore
   - npm install
 
 script:
